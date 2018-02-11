@@ -957,6 +957,19 @@ public class Timeline extends Weibo {
 	}
 
 	/**
+	 * 第三方分享微博
+	 * @param status
+	 * @return
+	 * @throws WeiboException
+	 */
+	public Status share(String status) throws WeiboException {
+		return new Status(client.post(WeiboConfig.getValue("baseURL")
+						+ "statuses/share.json",
+				new PostParameter[] { new PostParameter("status", status) },
+				access_token));
+	}
+
+	/**
 	 * 发布一条新微博
 	 * 
 	 * @param status
